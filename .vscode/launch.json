@@ -1,13 +1,6 @@
 {
     "configurations": [
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - JavaTestApplication",
-            "request": "launch",
-            "mainClass": "com.example.javatest.JavaTestApplication",
-            "projectName": "tapisserie"
-        },
-        {
+       {
             "type": "java",
             "name": "Spring Boot-JavaTestApplication<javatest>",
             "request": "launch",

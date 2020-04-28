@@ -56,6 +56,11 @@ public class MovieController {
 
     @Autowired
     CategoryService categoryService;
+
+    @Autowired
+    public MovieController(MovieService movieService) {
+        this.movieService = movieService;
+    }
     
 // save Movie
 
@@ -167,14 +172,10 @@ public class MovieController {
             AppResponse appResponse = new AppResponse();            
             MovieResponseDto.Movie moviesResponse = new MovieResponseDto.Movie();        
             Movie movie = movieService.findMovie(Integer.parseInt(movieId));
-            if (movie == null) {
-                throw new NotExistsException("movie not exists");
-            }
-            else{            
             modelMapper.map(movie, moviesResponse);
             moviesResponse.setMovieId(movie.getId());
             moviesResponse.setCategoryId(movie.getCategory() != null ? movie.getCategory().getId() : null);
-            }   
+               
             appResponse.setResponse(moviesResponse);
             appResponse.setDescription("your movie");
             return new ResponseEntity<>(appResponse, HttpStatus.OK);
